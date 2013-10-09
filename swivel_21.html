@@ -1,0 +1,594 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<!-- GreenSock -->
+
+		<script type="text/javascript" src="libs/js/src/minified/TweenMax.min.js"></script>
+		<script type="text/javascript" src="libs/js/src/minified/easing/EasePack.min.js"></script>
+		<script type="text/javascript" src="libs/js/src/minified/plugins/CSSPlugin.min.js"></script>
+        <script type="text/javascript" src="libs/js/src/minified/plugins/DirectionalRotationPlugin.min.js"></script>
+		<script type="text/javascript" src="libs/js/src/minified/TimelineMax.min.js"></script>
+		<script type="text/javascript" src="libs/js/src/minified/utils/Draggable.min.js"></script>
+		<script type="text/javascript" src="libs/js/src/minified/plugins/ThrowPropsPlugin.min.js"></script>
+		<script type="text/javascript" src="libs/js/src/minified/plugins/TextPlugin.min.js"></script>
+		<!-- TextPlugin.min.js-->
+		
+		<!-- GreenSock End -->
+		<!-- Bootstrap -->
+
+		<script src="libs/bootstrap/js/jquery.js" type="text/javascript">
+        </script>
+		<link href="libs/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="libs/bootstrap/css_supplement/supplement.css" rel="stylesheet" type="text/css" />
+		<link href="libs/bootstrap/css/justified-nav.css" rel="stylesheet" media="screen" type="text/css" />
+
+		<script type="text/javascript" src="libs/bootstrap/js/bootstrap.js">
+</script><!-- Bootstrap end -->
+		<title>
+			Swivel Interface
+		</title>
+		<style type="text/css">
+        .jtrontext h1{
+	    color:#ffffff;
+     	font-size:30px;
+ 		font-style:italic;
+        }
+
+
+
+        .swivel{
+	    color: #ffffff;
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	    font-size: 12px;
+	    width:100%;
+	    /*height:40px;*/
+	    margin:3px 0px 3px 0px;
+	    background-color: #000000;
+	   }
+        .swivelpage{
+	    position:absolute;
+	    left:0;
+	    width: 2408px;
+		height: 2442px;
+		top: -20px;
+		z-index:-100;
+		background-image:url('img/swiveltop.jpg');
+		overflow:hidden;
+	   }
+		.overlayhome{
+	    position:absolute;
+	    top: 150px;
+    	z-index:-10;
+	   }
+		.overlayprojects{
+	    position:absolute;
+	    top: 150px;
+   	    z-index:-11;
+	   }
+		.overlayservices{
+	    position:absolute;
+	    top: 150px;
+  	    z-index:-12;
+	   }
+		.overlaycontacts{
+	    position:absolute;
+	    top: 150px;
+  	    z-index:-13;
+	   }
+		/* Custom container Nav */
+		.masthead{
+			text-align:center;
+			background-color: #700000 ;
+			/*Opacity start*/
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+			filter: alpha(opacity=70);
+			-moz-opacity: 0.70;
+			-khtml-opacity: 0.7;
+			opacity: .5;
+			/*Opacity end*/
+		margin: 0 auto;
+		width: 100%;
+		top: 0px;
+		left: 0;
+		padding: 0px 0px 30px 0px;
+		position: fixed;
+		z-index:100;
+		}
+		.btn-group {
+		    margin: 0 auto; 
+		    text-align: center;
+		    font-size:0 !important;
+		}
+
+		.btn-group a {
+		display:inline-block;
+		text-align: center;
+		}
+
+		.btn-group {
+		    background-color: transparent;
+		    color: #333;
+		    display: block;
+		    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		    font-size: 13px;
+		    height: 26px;
+		    line-height: 17px;
+		    margin-bottom: 4px;
+		    margin-left: 0px;
+		    margin-right: 40px;
+		    margin-top: 0px;
+		    position: relative;
+		    text-align: center;
+		    width: 100%;
+		}
+
+		
+		
+
+		/* Customize the navbar links to be fill the entire space of the .navbar */
+		.navbar{
+		    width: 80%;
+		    margin: 0 auto;
+		}​
+		.navbarcenter  {
+			text-align: center;
+			width: 100%;			
+		  }
+		
+		  .navbar .navbar-inner {
+			padding: 0;
+		  }
+		  .navbar .nav {
+			margin: 0;
+			display: table;
+			width: 100%;
+			margin-left:40;
+		
+			
+		  }
+		  .navbar .nav li {
+			display: table-cell;
+			width: 1%;
+			float: none;
+			
+		  }
+		  .navbar .nav li a {
+			font-weight: bold;
+			text-align: center;
+			border-left: 1px solid rgba(255,255,255,.75);
+			border-right: 1px solid rgba(0,0,0,.1);
+			margin-left:40;
+		  }
+		  .navbar .nav li:first-child a {
+			border-left: 0;
+			border-radius: 3px 0 0 3px;
+		  }
+		  .navbar .nav li:last-child a {
+			border-right: 0;
+			border-radius: 0 3px 3px 0;
+		  }
+		/* Reset body padding and margins */
+		body { margin:0; padding:0; }
+
+		/* Make Header Sticky */
+		#header_container { background-color: #700000 ;
+		/*Opacity start*/
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+		filter: alpha(opacity=30);
+		-moz-opacity: 0.30;
+		-khtml-opacity: 0.3;
+		opacity: .3;
+		/*Opacity end*/
+		color: white;
+		position: fixed;
+		top: 0px;
+		left: 0;
+		width: 10px;
+		height: 15px;
+		padding: 0;
+		margin: 0; }
+		#header{ line-height:60px; margin:0 auto; width:940px; text-align:center; }
+
+		/* Make Footer Sticky */
+		#footer_container { background-color: #F3A30C ;
+		/*Opacity start*/
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+		filter: alpha(opacity=80);
+		-moz-opacity: 0.50;
+		-khtml-opacity: 0.5;
+		opacity: 0.5;
+		/*Opacity end*/
+		color: white;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 75px;
+		padding: 0;
+		margin: 0; }
+		#footer { line-height:60px; margin:0 auto; width:940px; text-align:center; }
+		
+		</style>
+	</head>
+	<body>
+	
+		<div class="container">
+			<!-- BEGIN: Sticky Header -->
+			
+			  <div class="masthead">
+				<div class="swivel">Use the navigation below to animate page changes</div>
+				
+					<div class="navbarcenter">
+					<div class="navbar">
+						<ul class="nav">
+							<div class="btn-group btn-group-justified">
+								
+									<div class="btn-group" data-toggle="buttons-radio">
+									  <label class="btn btn-primary"id="homeBtn">
+									    <name="Home"><h4>Home</h4></label>
+									  <label class="btn btn-primary" id="projectsBtn">
+									    <name="Projects"><h4>Projects</h4></label>
+									  <label class="btn btn-primary"id="servicesBtn">
+									    <name="Services"><h4>Services</h4></label>
+									<label class="btn btn-primary" id="contactsBtn">
+									    <name="Contacts"><h4>Contacts</h4></label>
+									</div>
+							 </div>
+							
+						 </ul>
+						</div> <!-- .navbar -->
+					</div> <!-- .navbarcenter -->
+				</div><!-- .masthead -->
+			<!-- END: Sticky Header -->
+			<!-- BEGIN: Page Content -->
+			<div class "container" id="container">
+					<div class="swivelpage" id="swivelpage">
+					</div><!-- END: swivelpage -->
+					
+				
+				
+				<div class="overlayhome" id="overlayhome">	
+				 <!-- Jumbotron -->
+				      <div class="jumbotron" id="jumbotron">
+				        <h1>Animation Action!</h1>
+				        <p class="lead">Activity is life, move to there, get back here. The next move, a plan or made up, <br>a tortoise, a hare, one more thing, just a bit over.</p>
+				        <p><a class="btn btn-lg btn-success" id="letsstartBtn" href="#"><type="button" >Let's start</a></p>
+				        <!-- <button type="button" id="letsstartBtn" class="btn btn-lg btn-success">Success</button> -->
+				      </div><!-- Jumbotron end-->
+                   <!-- Example row of columns -->
+				      <div class="row" id="rowhome">
+				        <div class="col-md-4" id="col1home">
+				          <h2>House</h2>
+				          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <p><a class="btn btn-primary" id="houseBtn" href="#">House &raquo;</a></p>
+				        </div>
+				        <div class="col-md-4" id="col2home">
+				          <h2>Apartment</h2>
+				          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <p><a class="btn btn-primary" id="aptBtn" href="#">Apartment &raquo;</a></p>
+				       </div>
+				        <div class="col-md-4" id="col3home">
+				          <h2>Hotel</h2>
+				          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+				          <p><a class="btn btn-primary" id="hotelBtn" href="#">Hotel &raquo;</a></p>
+				        </div>
+				      </div><!-- Row end-->
+				</div><!-- END: overlayhome -->
+				
+				<div class="overlayprojects" id="overlayprojects">	
+				 <!-- Jumbotron -->
+				      <div class="jumbotron" id="jumbotronprojects">
+				        <h1>Animate Projects!</h1>
+				        <p class="lead">Activity is life, move to there, get back here. The next move, a plan or made up, <br>a tortoise, a hare, one more thing, just a bit over.</p>
+				        <p><a class="btn btn-lg btn-success" id="projectsStartBtn" href="#">Start Now!</a></p>
+				      </div><!-- Jumbotron end-->
+                   <!-- Example row of columns -->
+				      <div class="row">
+				        <div class="col-md-4" id="proj1">
+				          <h2>Project One</h2>
+				          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <p><a class="btn btn-primary" href="#">House &raquo;</a></p>
+				        </div>
+				        <div class="col-md-4" id="proj2">
+				          <h2>Project Two</h2>
+				          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <p><a class="btn btn-primary" href="#">Apartment &raquo;</a></p>
+				       </div>
+				        <div class="col-md-4" id="proj3">
+				          <h2>Project Three</h2>
+				          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+				          <p><a class="btn btn-primary" href="#">Hotel &raquo;</a></p>
+				        </div>
+				      </div><!-- Row end-->
+				</div><!-- END: overlayprojects -->	
+				
+				<div class="overlayservices" id="overlayservices">	
+				 <!-- Jumbotron -->
+				      <div class="jumbotron" id="jumbotronservices">
+				        <h1>Drag Me Service</h1>
+				        <p class="lead">Activity is life, move to there, get back here. The next move, a plan or made up, <br>a tortoise, a hare, one more thing, just a bit over.</p>
+				        <p><a class="btn btn-lg btn-success" href="#">Be a drag</a></p>
+				      </div><!-- Jumbotron end-->
+                   <!-- Example row of columns -->
+				      <div class="row">
+				        <div class="col-md-4">
+				          <h2>First Class</h2>
+				          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <p><a class="btn btn-primary" href="#">House &raquo;</a></p>
+				        </div>
+				        <div class="col-md-4">
+				          <h2>Second Class</h2>
+				          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <p><a class="btn btn-primary" href="#">Apartment &raquo;</a></p>
+				       </div>
+				        <div class="col-md-4">
+				          <h2>Third Class</h2>
+				          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+				
+				          <p><a class="btn btn-primary" href="#">Hotel &raquo;</a></p>
+				        </div>
+						<!-- <div class="col-md-4">
+										          <h2>Forth Class</h2>
+										          
+										<script type="text/javascript" src="http://lukedohner.tumblr.com/js"></script>
+										          <p><a class="btn btn-primary" href="#">Hotel &raquo;</a></p>
+										        </div> -->
+				      </div><!-- Row end-->
+				
+					
+
+				
+				
+				</div><!-- END: overlayservices -->
+				
+				<div class="overlaycontacts" id="overlaycontacts">	
+				 <!-- Jumbotron -->
+				      <div class="jumbotron" id="jumbotroncontact">
+				        <h1 id="contactheader">Contact and Spin</h1>
+				        <p class="lead">Activity is life, move to there, get back here. The next move, a plan or made up, <br>a tortoise, a hare, one more thing, just a bit over.</p>
+				        <p><a class="btn btn-lg btn-success" id="contactyourself" href="#">Make This Spin</a></p>
+				      </div><!-- Jumbotron end-->
+                   <!-- Example row of columns -->
+				      <div class="row">
+				        <div class="col-md-4">
+				          <h2>Contact Me</h2>
+				          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <p><a class="btn btn-primary" href="#">222-333-4444 &raquo;</a></p>
+				        </div>
+				        <div class="col-md-4">
+				          <h2>Contact Yourself</h2>
+				          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <p><a class="btn btn-primary" href="#">you@web.com &raquo;</a></p>
+				       </div>
+				        <div class="col-md-4">
+				          <h2>Alien Contact</h2>
+				          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+				          <p><a class="btn btn-primary" href="#">leave message &raquo;</a></p>
+				        </div>
+				      </div><!-- Row end-->
+				</div><!-- END: overlaycontacts -->
+				
+			</div><!-- END: Page Content -->
+			<!-- BEGIN: Sticky Footer -->
+			<div id="footer_container">
+			 
+				<div id="footer">
+                	
+			</div><!-- END: Sticky Footer -->
+		</div><!-- /container -->
+		<!-- Le javascript-->
+		<!-- Placed at the end of the document so the pages load faster BUT put jQuery.js before bootstrap.css-->
+		<script src="libs/bootstrap/js/bootstrap-transition.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-alert.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-modal.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-dropdown.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-scrollspy.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-tab.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-tooltip.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-popover.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-button.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-collapse.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-carousel.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-typeahead.js" type="text/javascript">
+</script>
+</div><script type="text/javascript">
+
+var page1 = document.getElementById("page1"),
+	homeBtn = document.getElementById("homeBtn"),
+	pauseBtn = document.getElementById("pauseBtn"),
+	resumeBtn = document.getElementById("resumeBtn"),
+	projectsBtn = document.getElementById("projectsBtn"),
+	playFromBtn = document.getElementById("playFromBtn"),
+	reverseFromBtn = document.getElementById("reverseFromBtn"),
+	seekBtn = document.getElementById("seekBtn"),
+	timeScaleSlowBtn = document.getElementById("timeScaleSlowBtn"),
+	timeScaleNormalBtn = document.getElementById("timeScaleNormalBtn"),
+	timeScaleFastBtn = document.getElementById("timeScaleFastBtn"),
+	// letsstartBtn = document.getElementById("letsstartBtn"),
+
+	tween0 = TweenLite.to(swivelpage, 1, {
+		css: { rotation:"0deg"},
+				ease:Elastic.easeOut
+		});
+	
+		//on load//
+		function hidethem() {
+		     	tl = new TimelineMax({});
+				tl.insertMultiple( TweenMax.allTo([overlayprojects, overlayservices, overlaycontacts], 0, {autoAlpha:0}, 0), 0);
+		        }
+		window.onload = hidethem;
+///CHANGE PAGE FUNCTION///
+     // home
+    function changepage(swiveldegree,overlaypage) {
+		tl = new TimelineMax({});
+		tl.insertMultiple( TweenMax.allTo([overlayhome, overlayprojects, overlayservices, overlaycontacts], 0.1, {autoAlpha:0}, 0), 0);
+		tl.to(swivelpage, 0.5, {css: { directionalRotation:swiveldegree}, ease:Quad.easeOut, overwrite:"all" });
+		tl.to(overlayhome, 0.5, {css: { autoAlpha:1}, ease:Quad.easeOut});
+		tl.from(rowhome, 0.5, {css: { scaleY:.1, alpha:0, directionalRotation:swiveldegree}, delay:.5, ease:Quad.easeOut, overwrite:"all" });
+		
+		//replaces yourElement's text with "This is the new text" over the course of 2 seconds
+		tl.to(rowhome, 2, {text:"This is the new text", ease:Linear.easeNone});
+		console.log('Function changepage home'+swiveldegree+swiveldegree);		
+	}
+	// projects
+	function changepage2(swiveldegree,overlaypage) {
+		tl = new TimelineMax({});
+		tl.insertMultiple( TweenMax.allTo([overlayhome, overlayprojects, overlayservices, overlaycontacts], 0.1, {autoAlpha:0}, 0), 0);
+		tl.to(swivelpage, 0.5, {css: { directionalRotation:swiveldegree}, ease:Quad.easeOut, overwrite:"all" });
+		tl.to(overlayprojects, 0.5, {css: { autoAlpha:1}, ease:Quad.easeOut});
+		tl.from([proj1, proj2, proj3], 0.3, {css: { x:500, alpha:0, directionalRotation:swiveldegree}, delay:.1, ease:Quad.easeOut, overwrite:"all" });
+		
+		console.log('Function changepage projects'+swiveldegree+swiveldegree);		
+	}
+	// services
+	function changepage3(swiveldegree,overlaypage) {
+		TweenLite.to(jumbotronservices, .01, {css:{x:0, y:0,}})
+		tl = new TimelineMax({});
+		tl.insertMultiple( TweenMax.allTo([overlayhome, overlayprojects, overlayservices, overlaycontacts], 0.1, {autoAlpha:0}, 0), 0);
+		tl.to(swivelpage, 0.5, {css: { directionalRotation:swiveldegree}, ease:Quad.easeOut, overwrite:"all"  });
+		tl.to(overlayservices, 0.5, {css: { autoAlpha:1}, ease:Quad.easeOut });
+		tl.from(jumbotronservices, 1, {css: { x:-500, y:-100, scaleY:.1,scaleX:.1, alpha:0, directionalRotation:swiveldegree}, delay:.2, ease:Bounce.easeOut, overwrite:"all"  });
+		// Draggable.create(jumbotronservices, {type:"x,y", edgeResistance:0.65, bounds:$(container), throwProps:true});
+		// Draggable.create("#jumbotronservices", {type:"x,y", edgeResistance:0.65, bounds:$(container), throwProps:true});
+		// Draggable.create("#jumbotronservices");
+		Draggable.create("#jumbotronservices", {
+		        // type:"x,y",
+		        //bounds: document.getElementById("container"),
+		        throwProps:true,
+		        onClick:function() {
+		            console.log("clicked");
+		        },
+		        onDragEnd:function() {
+		            console.log("drag ended");
+		t2 = new TimelineMax({});
+		tl.to("#jumbotronservices", 0.1, {css: { x:1,y:1}, ease:Quad.easeOut });
+		tl.from("#jumbotronservices", 0.1, {css: { directionalRotation:-6}, ease:Bounce.easeOut });
+		
+		
+		        }
+		    });
+		console.log('Function changepage services'+swiveldegree+swiveldegree);		
+	}
+	// contact
+	function changepage4(swiveldegree,overlaypage) {
+		// TweenLite.to("#overlaycontacts", .01, {css:{rotation:0}})
+		tl = new TimelineMax({});
+		tl.insertMultiple( TweenMax.allTo([overlayhome, overlayprojects, overlayservices, overlaycontacts], 0.5, {autoAlpha:0}, 0), 0);
+		tl.to(overlaycontacts, .1, {css: {rotation:0}, ease:Quad.easeOut});
+		
+		tl.to(swivelpage, 0.5, {css: { directionalRotation:swiveldegree}, ease:Quad.easeOut, overwrite:"all"  });
+		tl.to(overlaycontacts, 0.5, {css: { autoAlpha:1}, ease:Quad.easeOut, overwrite:"all"  });
+		tl.from(contactyourself, 0.5, {css: { x:500, alpha:0, directionalRotation:swiveldegree}, delay:0.5, ease:Bounce.easeOut, overwrite:"all"  });
+		var rotationSnap = 360 * (Math.PI / 180); //90 degrees described in radians (for snapping)
+		Draggable.create("#overlaycontacts", {
+		        type:"rotation",
+		        throwProps:true,
+		        snap:function(endValue) { 
+		//TweenMax.to(contactheader, 2, {text:"Nice work! Do it again the text will not change.", ease:Linear.easeNone,delay:1});
+		
+		TweenLite.to(contactheader, 2, {text:{value:"Nice work! Do it again the text will not change.", delimiter:" "}, ease:Linear.easeNone});
+	
+		TweenMax.to(contactheader, 1, {text:"Dude.", ease:Linear.easeNone,delay:5});
+			//TweenLite.to(contactheader, 2, {text:{value:"Nice work! Do it again the text will not change.", newClass:"jtrontext ", oldClass:"jumbotron"}, ease:Power2.easeIn, delay:1});
+			//TweenLite.to(contactheader, 1, {text:{value:"Dude", newClass:"jtrontext h1", oldClass:"jtrontext h1"}, ease:Power2.easeIn, delay:4});
+			
+			
+			
+			//TweenMax.to(contactheader, 1, {text:"Dude", ease:Linear.easeNone,delay:4});
+		    //this function gets called by ThrowPropsPlugin when the mouse/finger is released and it plots where rotation should normally end and we can alter that value and return a new one instead. This gives us an easy way to apply custom snapping behavior with any logic we want. In this case, we'll just make sure the end value snaps to 90-degree increments but only when the "snap" checkbox is selected. rotation values are always defined in radians, not degrees!
+		    return Math.round(endValue / rotationSnap) * rotationSnap;
+			//wraps the old text in <span class="class1"></span> and the new text in a <span class="class2"></span>
+			
+		
+		        }
+		    });
+		console.log('Function changepage contacts'+swiveldegree+swiveldegree);		
+	}
+	function letsstartani() {
+		console.log('letsstartani');
+		tl2 = new TimelineMax({});
+		tl2.add([new TweenLite.from(col1home, .2, {y:120, scaleY:.1,autoAlpha:0}), new TweenLite.from(col2home, .2, {y:120, scaleY:.1,autoAlpha:0}), new TweenLite.from(col3home, .2, {y:120, scaleY:.1,autoAlpha:0})], 0, "stagger", .2);
+	}
+	function houseani() {
+		console.log('col1home');
+		TweenMax.from(col1home, 2, {autoAlpha:0,rotationY:320, transformOrigin:"left 10% -80", ease:Bounce.easeOut})
+	}
+	function aptani() {
+		console.log('col1home');
+		TweenMax.from(col2home, 2, {autoAlpha:0, rotationX:320, transformOrigin:"top 100% -30", ease:Bounce.easeOut})
+	}
+	
+	function hotelani() {
+		console.log('col1home');
+		// TweenMax.from(col3home, 2, {autoAlpha:0,rotationY:320, transformOrigin:"left 100% -100", ease:Bounce.easeOut})
+			tl2 = new TimelineMax({});
+			tl2.add([new TweenLite.from(col1home, .5, {autoAlpha:0,rotationY:320, transformOrigin:"left 10% -80", ease:Bounce.easeOut}), new TweenLite.from(col2home, .5, {autoAlpha:0, rotationX:320, transformOrigin:"top 100% -30", ease:Bounce.easeOut}), new TweenLite.from(col3home, .5, {autoAlpha:0,rotationY:320, transformOrigin:"left 100% -100", ease:Bounce.easeOut})], 0, "stagger", .2);
+	}
+	
+	function projectsani() {
+		console.log('projectsani');
+		
+			tl2 = new TimelineMax({});
+			tl2.add([ new TweenLite.to(jumbotronprojects, .2, {scaleX:.1,scaleY:.1,x:450, y:-120,}),new TweenLite.to(proj2, .2, {scaleX:.1,scaleY:.1,x:420, y:-360,}), new TweenLite.to(proj3, .2, {scaleX:.1,scaleY:.1,x:110, y:-350,}),new TweenLite.to(proj1, .8, {scaleX:3, scaleY:3, x:375, y:-120, ease:Bounce.easeOut})], 0, "stagger", .2);
+			
+			tl2.add([new TweenLite.to(proj1, .2, {scaleX:1, scaleY:1, x:0, y:0, ease:Bounce.easeOut}), new TweenLite.to(jumbotronprojects, .2, {scaleX:1,scaleY:1, x:0, y:0,}), new TweenLite.to(proj2, .2, {scaleX:1,scaleY:1, x:0, y:0,}), new TweenLite.to(proj3, .2, {scaleX:1,scaleY:1, x:0, y:0,})], 3, "stagger", .2);
+	}
+//jumbotronprojects
+	////HOME BUTTON////
+    homeBtn.onclick = function() {
+	changepage('0_short','overlaypage projects');
+	}
+
+projectsBtn.onclick = function() {
+	changepage2('-90_short','overlaypage projects');
+}
+servicesBtn.onclick = function() {
+	changepage3('180_short','overlaypage projects');
+}
+contactsBtn.onclick = function() {
+	changepage4('90_short','overlaypage projects');
+}
+// letsstartBtn.onclick = function() {
+// 	letsstartani();
+// }
+// $(function(){
+// $('#contactyourself').on('click', function (e) {
+// alert('Hello contactyourself!');
+//  });
+// });
+
+$(function(){
+$('#letsstartBtn').on('click', function (e) {
+letsstartani();
+ });
+});	
+$(function(){
+$('#houseBtn').on('click', function (e) {
+houseani();
+ });
+});
+
+$(function(){
+$('#aptBtn').on('click', function (e) {
+aptani();
+ });
+});
+
+$(function(){
+$('#hotelBtn').on('click', function (e) {
+hotelani();
+ });
+});
+
+$(function(){
+$('#projectsStartBtn').on('click', function (e) {
+projectsani();
+ });
+});
+
+</script>
+	</body>
+</html>

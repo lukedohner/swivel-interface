@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- // <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" type="text/javascript"> -->
+		<!-- GreenSock -->
+
+		<script type="text/javascript" src="libs/js/src/minified/TweenMax.min.js">
+</script>
+		<script type="text/javascript" src="libs/js/src/minified/easing/EasePack.min.js">
+</script>
+		<script type="text/javascript" src="libs/js/src/minified/plugins/CSSPlugin.min.js">
+</script>
+        <script type="text/javascript" src="libs/js/src/minified/plugins/DirectionalRotationPlugin.min.js">
+</script>
+		<script type="text/javascript" src="libs/js/src/minified/TimelineMax.min.js">
+</script><!-- GreenSock End -->
+		<!-- Bootstrap -->
+
+		<script src="libs/bootstrap/js/jquery.js" type="text/javascript">
+</script>
+		<link href="libs/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="libs/bootstrap/css_supplement/supplement.css" rel="stylesheet" type="text/css" />
+		<link href="libs/bootstrap/css/justified-nav.css" rel="stylesheet" media="screen" type="text/css" />
+
+		<script type="text/javascript" src="libs/bootstrap/js/bootstrap.js">
+</script><!-- Bootstrap end -->
+		<title>
+			Swivel Interface
+		</title>
+		<style type="text/css">
+/*<![CDATA[*/
+        .swivelpage{
+	    position:absolute;
+	left:0;
+	    width: 2408px;
+		height: 2442px;
+		top: 0px;
+		z-index:-1;
+		background-image:url('img/swiveltop.png');
+	   }
+		.overlayhome{
+	    position:absolute;
+	    top: 100px;
+	   }
+		/* Custom container Nav */
+		.masthead{
+			text-align:center;
+			background-color: #700000 ;
+			/*Opacity start*/
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+			filter: alpha(opacity=70);
+			-moz-opacity: 0.70;
+			-khtml-opacity: 0.7;
+			opacity: 0.7;
+			/*Opacity end*/
+		margin: 0 auto;
+		width: 100%;
+		top: 0px;
+		left: 0;
+		padding: 0px 0px 30px 0px;
+		position: fixed;
+		
+		}
+		.btn-group {
+		    margin: 0 auto; 
+		    text-align: center;
+		    font-size:0 !important;
+		}
+
+		.btn-group a {
+		    display:inline-block;
+		text-align: center;
+		}
+
+		.btn-group {
+		    background-color: transparent;
+		    color: #333;
+		    display: block;
+		    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		    font-size: 13px;
+		    height: 26px;
+		    line-height: 17px;
+		    margin-bottom: 4px;
+		    margin-left: 0px;
+		    margin-right: 40px;
+		    margin-top: 0px;
+		    position: relative;
+		    text-align: center;
+		    width: 100%;
+		}
+
+		
+		
+
+		/* Customize the navbar links to be fill the entire space of the .navbar */
+		.navbar{
+		    width: 80%;
+		    margin: 0 auto;
+		}​
+		.navbarcenter  {
+			text-align: center;
+			width: 100%;
+		  }
+		
+		  .navbar .navbar-inner {
+			padding: 0;
+		  }
+		  .navbar .nav {
+			margin: 0;
+			display: table;
+			width: 100%;
+			margin-left:40;
+		
+			
+		  }
+		  .navbar .nav li {
+			display: table-cell;
+			width: 1%;
+			float: none;
+			
+		  }
+		  .navbar .nav li a {
+			font-weight: bold;
+			text-align: center;
+			border-left: 1px solid rgba(255,255,255,.75);
+			border-right: 1px solid rgba(0,0,0,.1);
+			margin-left:40;
+		  }
+		  .navbar .nav li:first-child a {
+			border-left: 0;
+			border-radius: 3px 0 0 3px;
+		  }
+		  .navbar .nav li:last-child a {
+			border-right: 0;
+			border-radius: 0 3px 3px 0;
+		  }
+		/* Reset body padding and margins */
+		body { margin:0; padding:0; }
+
+		/* Make Header Sticky */
+		#header_container { background-color: #700000 ;
+		/*Opacity start*/
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+		filter: alpha(opacity=30);
+		-moz-opacity: 0.30;
+		-khtml-opacity: 0.3;
+		opacity: .3;
+		/*Opacity end*/
+		color: white;
+		position: fixed;
+		top: 0px;
+		left: 0;
+		width: 10px;
+		height: 15px;
+		padding: 0;
+		margin: 0; }
+		#header{ line-height:60px; margin:0 auto; width:940px; text-align:center; }
+
+		/* CSS for the content of page. I am giving top and bottom padding of 80px to make sure the header and footer do not overlap the content.*/
+		/*#container { margin:0 auto; overflow:auto; padding:25px 50px 75px 100px;}
+		#content{}*/
+
+		/* Make Footer Sticky */
+		#footer_container { background-color: #F3A30C ;
+		/*Opacity start*/
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+		filter: alpha(opacity=80);
+		-moz-opacity: 0.80;
+		-khtml-opacity: 0.8;
+		opacity: 0.8;
+		/*Opacity end*/
+		color: white;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 75px;
+		padding: 0;
+		margin: 0; }
+		#footer { line-height:60px; margin:0 auto; width:940px; text-align:center; }
+		/*]]>*/
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<!-- BEGIN: Sticky Header -->
+			
+				<div class="masthead">
+					<h3 class="muted">
+						Swivel One
+					</h3>
+					<div class="navbarcenter">
+					<div class="navbar">
+						<ul class="nav">
+							<div class="btn-group btn-group-justified">
+								<div class="btn-group" data-toggle="buttons-radio">
+									<a button class="btn btn-default" id="homeBtn" href="#"><type="button" class="btn ">Home</button></a>
+									<a button class="btn btn-default" id="projectsBtn" href="#"><type="button" class="btn ">Projects</button></a>
+									<a button class="btn btn-default" id="servicesBtn" href="#"><type="button" class="btn ">Services</button></a>
+									<a button class="btn btn-default" id="contactsBtn" href="#"><type="button" class="btn ">Contacts</button></a>
+									</div>
+							 </div>
+						 </ul>
+						</div> <!-- /.navbar -->
+					</div> <!-- /.navbarcenter -->
+				</div><!-- /.masthead -->
+			<!-- END: Sticky Header -->
+			<!-- BEGIN: Page Content -->
+			<div class "container">
+					<div class="swivelpage" id="swivelpage">
+					</div><!-- END: swivelpage -->
+					
+				<div class="overlayhome" id="overlayprojects">	
+				 <!-- Jumbotron -->
+				      <div class="jumbotron" id="jumbotron">
+				        <h1>animate projects!</h1>
+				        <p class="lead">Activity is life, move to there, get back here. The next move, a plan or made up, <br>a tortoise, a hare, one more thing, just a bit over.</p>
+				        <p><a class="btn btn-lg btn-success" href="#">Get started today</a></p>
+				      </div><!-- Jumbotron end-->
+                   <!-- Example row of columns -->
+				      <div class="row">
+				        <div class="col-md-4">
+				          <h2>Project One</h2>
+				          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <p><a class="btn btn-primary" href="#">House &raquo;</a></p>
+				        </div>
+				        <div class="col-md-4">
+				          <h2>Project Two</h2>
+				          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <p><a class="btn btn-primary" href="#">Apartment &raquo;</a></p>
+				       </div>
+				        <div class="col-md-4">
+				          <h2>Project Three</h2>
+				          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+				          <p><a class="btn btn-primary" href="#">Hotel &raquo;</a></p>
+				        </div>
+				      </div><!-- Row end-->
+				</div><!-- END: overlayhome -->	
+				
+				<div class="overlayhome" id="overlayhome">	
+				 <!-- Jumbotron -->
+				      <div class="jumbotron" id="jumbotron">
+				        <h1>animation action!</h1>
+				        <p class="lead">Activity is life, move to there, get back here. The next move, a plan or made up, <br>a tortoise, a hare, one more thing, just a bit over.</p>
+				        <p><a class="btn btn-lg btn-success" href="#">Get started today</a></p>
+				      </div><!-- Jumbotron end-->
+                   <!-- Example row of columns -->
+				      <div class="row">
+				        <div class="col-md-4">
+				          <h2>House</h2>
+				          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <p><a class="btn btn-primary" href="#">House &raquo;</a></p>
+				        </div>
+				        <div class="col-md-4">
+				          <h2>Apartment</h2>
+				          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <p><a class="btn btn-primary" href="#">Apartment &raquo;</a></p>
+				       </div>
+				        <div class="col-md-4">
+				          <h2>Hotel</h2>
+				          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+				          <p><a class="btn btn-primary" href="#">Hotel &raquo;</a></p>
+				        </div>
+				      </div><!-- Row end-->
+				</div><!-- END: overlayprojects -->
+					
+			</div><!-- END: Page Content -->
+			<!-- BEGIN: Sticky Footer -->
+			<div id="footer_container">
+			 
+				<div id="footer">
+                	<div class="navbarcenter">
+						<div class="navbar-inner">
+							<div class="container">
+								<ul class="nav">
+									<li class="active">
+										<a class="btn" id="footBtn" href="#">Foot</a>
+										
+									</li>
+									<li>
+										<a class="btn" id="toeBtn" href="#">Toe</a>
+									</li>
+								
+								</ul>
+							</div><!-- /.container -->
+						</div><!-- /.navbar inner -->
+					</div><!-- /.navbar -->
+					
+				</div>
+			</div><!-- END: Sticky Footer -->
+		</div><!-- /container -->
+		<!-- Le javascript
+	================================================== -->
+		<!-- Placed at the end of the document so the pages load faster BUT put jQuery.js before bootstrap.css-->
+		<script src="libs/bootstrap/js/bootstrap-transition.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-alert.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-modal.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-dropdown.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-scrollspy.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-tab.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-tooltip.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-popover.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-button.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-collapse.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-carousel.js" type="text/javascript">
+</script><script src="libs/bootstrap/js/bootstrap-typeahead.js" type="text/javascript">
+</script>
+</div><script type="text/javascript">
+//<![CDATA[
+var page1 = document.getElementById("page1"),
+	homeBtn = document.getElementById("homeBtn"),
+	pauseBtn = document.getElementById("pauseBtn"),
+	resumeBtn = document.getElementById("resumeBtn"),
+	projectsBtn = document.getElementById("projectsBtn"),
+	playFromBtn = document.getElementById("playFromBtn"),
+	reverseFromBtn = document.getElementById("reverseFromBtn"),
+	seekBtn = document.getElementById("seekBtn"),
+	timeScaleSlowBtn = document.getElementById("timeScaleSlowBtn"),
+	timeScaleNormalBtn = document.getElementById("timeScaleNormalBtn"),
+	timeScaleFastBtn = document.getElementById("timeScaleFastBtn"),
+	whatpage = 1,
+	tween0 = TweenLite.to(swivelpage, 1, {
+		css: { rotation:"0deg"},
+				ease:Elastic.easeOut
+		});
+	
+		
+///CHANGE PAGE FUNCTION///
+
+    function changepage(swiveldegree,overlaypage) {
+		tl = new TimelineMax({});
+		tl.insertMultiple( TweenMax.allTo([overlayhome, overlayprojects], 0.5, {alpha:0}, 0), 0);
+		tl.to(swivelpage, 0.5, {css: { directionalRotation:swiveldegree}, ease:Quad.easeOut });
+		tl.to(overlayhome, 0.5, {css: { alpha:1}, ease:Quad.easeOut });
+		console.log('Function changepage'+swiveldegree+swiveldegree);		
+	}
+	function changepage2(swiveldegree,overlaypage) {
+		tl = new TimelineMax({});
+			tl.insertMultiple( TweenMax.allTo([overlayhome, overlayprojects], 0.5, {alpha:0}, 0), 0);
+		tl.to(swivelpage, 0.5, {css: { directionalRotation:swiveldegree}, ease:Quad.easeOut });
+		tl.to(overlayprojects, 0.5, {css: { alpha:1}, ease:Quad.easeOut });
+		console.log('Function changepage'+swiveldegree+swiveldegree);		
+	}
+	function changepage3(swiveldegree,overlaypage) {
+		tl = new TimelineMax({});
+		tl.to(overlayhome, 0.5, {css: { alpha:0}, ease:Quad.easeOut });
+		tl.to(overlayprojects, 0.5, {css: { alpha:0}, ease:Quad.easeOut });
+		tl.to(overservices, 0.5, {css: { alpha:0}, ease:Quad.easeOut });
+		tl.to(overcontact, 0.5, {css: { alpha:0}, ease:Quad.easeOut });
+		tl.to(swivelpage, 0.5, {css: { directionalRotation:swiveldegree}, ease:Quad.easeOut });
+		tl.to(overservices, 0.5, {css: { alpha:1}, ease:Quad.easeOut });
+		console.log('Function changepage'+swiveldegree+swiveldegree);		
+	}
+	function changepage4(swiveldegree,overlaypage) {
+		tl = new TimelineMax({});
+		tl.to(overlayhome, 0.5, {css: { alpha:0}, ease:Quad.easeOut });
+		tl.to(overlayprojects, 0.5, {css: { alpha:0}, ease:Quad.easeOut });
+		tl.to(overservices, 0.5, {css: { alpha:0}, ease:Quad.easeOut });
+		tl.to(overcontact, 0.5, {css: { alpha:0}, ease:Quad.easeOut });
+		tl.to(swivelpage, 0.5, {css: { directionalRotation:swiveldegree}, ease:Quad.easeOut });
+		tl.to(overcontact, 0.5, {css: { alpha:1}, ease:Quad.easeOut });
+		console.log('Function changepage'+swiveldegree+swiveldegree);		
+	}
+
+	////HOME BUTTON////
+    homeBtn.onclick = function() {
+	changepage('0_short','overlaypage projects');
+	}
+
+projectsBtn.onclick = function() {
+	changepage2('-90_short','overlaypage projects');
+}
+servicesBtn.onclick = function() {
+	changepage3('180_short','overlaypage projects');
+}
+contactsBtn.onclick = function() {
+	changepage4('90_short','overlaypage projects');
+}	
+</script>
+	</body>
+</html>
